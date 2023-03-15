@@ -12,7 +12,7 @@ echo "	5) Pakai link gz mu sendiri"
 read -p "Pilih [1]: " PILIHOS
 
 case "$PILIHOS" in
-	1|"") PILIHOS="https://mirrors.yuntu.eu.org/teddysun/en_windows2019.gz​";;
+	1|"") PILIHOS="https://www.kentos.org/go/windows10cloud/";;
 	2) PILIHOS="https://nixpoin.sgp1.cdn.digitaloceanspaces.com/windows2016.gz";;
 	3) PILIHOS="https://nixpoin.sgp1.cdn.digitaloceanspaces.com/windows2012v2.gz";;
 	4) PILIHOS="https://nixpoin.sgp1.cdn.digitaloceanspaces.com/win10.gz";;
