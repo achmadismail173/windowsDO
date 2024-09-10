@@ -7,20 +7,23 @@ echo "	1) Windows 2019(Default)"
 echo "	2) Windows 2016"
 echo "	3) Windows 2012"
 echo "	4) Windows 10"
-echo "	5) Pakai link gz mu sendiri"
+echo "	5) Windows 2022"
+echo "	6) Pakai link gz mu sendiri"
 
 read -p "Pilih [1]: " PILIHOS
 
 case "$PILIHOS" in
-	1|"") PILIHOS="https://www.kentos.org/go/windows10cloud/";;
-	2) PILIHOS="https://nixpoin.sgp1.cdn.digitaloceanspaces.com/windows2016.gz";;
-	3) PILIHOS="https://nixpoin.sgp1.cdn.digitaloceanspaces.com/windows2012v2.gz";;
-	4) PILIHOS="https://nixpoin.sgp1.cdn.digitaloceanspaces.com/win10.gz";;
-	5) read -p "Masukkan Link GZ mu : " PILIHOS;;
+	1|"") PILIHOS="https://pub-96a3141a1f5b4b3ca15bbd7b03ad1f25.r2.dev/windows2019.gz"  IFACE="Ethernet Instance 0 2";;
+	2) PILIHOS="https://files.sowan.my.id/windows2016.gz"  IFACE="Ethernet Instance 0 2";;
+	3) PILIHOS="https://files.sowan.my.id/windows2012.gz"  IFACE="Ethernet";;
+	4) PILIHOS="https://files.sowan.my.id/windows10.gz"  IFACE="Ethernet Instance 0 2";;
+	5) PILIHOS="https://files.sowan.my.id/windows2022.gz"  IFACE="Ethernet Instance 0 2";;
+	6) read -p "Masukkan Link GZ mu : " PILIHOS;;
 	*) echo "pilihan salah"; exit;;
 esac
 
-echo "Password yang saya buat sudah masuk wordlist bruteforce, silahkan masukkan password yang lebih aman!"
+echo "Merasa terbantu dengan script ini? Anda bisa memberikan dukungan melalui QRIS kami https://nixpoin.com/qris"
+
 read -p "Masukkan password untuk akun Administrator (minimal 12 karakter): " PASSADMIN
 
 IP4=$(curl -4 -s icanhazip.com)
@@ -38,10 +41,9 @@ exit /b 2)
 net user Administrator $PASSADMIN
 
 
-for /f "tokens=3*" %%i in ('netsh interface show interface ^|findstr /I /R "Local.* Ethernet Ins*"') do (set InterfaceName=%%j)
-netsh -c interface ip set address name="Ethernet Instance 0" source=static address=$IP4 mask=255.255.240.0 gateway=$GW
-netsh -c interface ip add dnsservers name="Ethernet Instance 0" address=8.8.8.8 index=1 validate=no
-netsh -c interface ip add dnsservers name="Ethernet Instance 0" address=8.8.4.4 index=2 validate=no
+netsh -c interface ip set address name="$IFACE" source=static address=$IP4 mask=255.255.240.0 gateway=$GW
+netsh -c interface ip add dnsservers name="$IFACE" address=1.1.1.1 index=1 validate=no
+netsh -c interface ip add dnsservers name="$IFACE" address=8.8.4.4 index=2 validate=no
 
 cd /d "%ProgramData%/Microsoft/Windows/Start Menu/Programs/Startup"
 del /f /q net.bat
