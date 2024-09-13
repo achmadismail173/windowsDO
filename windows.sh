@@ -107,4 +107,4 @@ case "$Pilihres" in
  	sleep 3
 	poweroff
 	;;
-
+esac
