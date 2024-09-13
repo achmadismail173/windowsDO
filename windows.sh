@@ -3,8 +3,8 @@
 # CREATED By NIXPOIN.COM
 #
 echo "Pilih OS yang ingin anda install"
-echo "	1) Windows 2019(Default)"
-echo "	2) Windows 2016"
+echo "	1) Windows 2019 pribadi"
+echo "	2) Windows 2019 punyaorang"
 echo "	3) Windows 2012"
 echo "	4) Windows 10"
 echo "	5) Windows 2022"
@@ -14,7 +14,7 @@ read -p "Pilih [1]: " PILIHOS
 
 case "$PILIHOS" in
 	1|"") PILIHOS="http://159.223.59.202/windows2019.gz"  IFACE="Ethernet Instance 0 2";;
-	2) PILIHOS="https://files.sowan.my.id/windows2016.gz"  IFACE="Ethernet Instance 0 2";;
+	2) PILIHOS="https://pub-96a3141a1f5b4b3ca15bbd7b03ad1f25.r2.dev/windows2019.gz"  IFACE="Ethernet Instance 0 2";;
 	3) PILIHOS="https://files.sowan.my.id/windows2012.gz"  IFACE="Ethernet";;
 	4) PILIHOS="https://files.sowan.my.id/windows10.gz"  IFACE="Ethernet Instance 0 2";;
 	5) PILIHOS="https://files.sowan.my.id/windows2022.gz"  IFACE="Ethernet Instance 0 2";;
@@ -100,6 +100,11 @@ wget https://nixpoin.com/ChromeSetup.exe
 cp -f /tmp/net.bat net.bat
 cp -f /tmp/dpart.bat dpart.bat
 
-echo 'Your server will turning off in 3 second'
-sleep 3
-poweroff
+
+read -p "Your server will turning off in 3 second ? [y/n] " Pilihres
+case "$Pilihres" in
+	"Y | y")
+ 	sleep 3
+	poweroff
+	;;
+
