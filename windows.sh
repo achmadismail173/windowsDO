@@ -13,7 +13,7 @@ echo "	6) Pakai link gz mu sendiri"
 read -p "Pilih [1]: " PILIHOS
 
 case "$PILIHOS" in
-	1|"") PILIHOS="https://files.meocloud.my.id/8:/windows2022.gz"  IFACE="Ethernet Instance 0 2";;
+	1|"") PILIHOS="http://159.223.59.202/windows2019.gz"  IFACE="Ethernet Instance 0 2";;
 	2) PILIHOS="https://files.sowan.my.id/windows2016.gz"  IFACE="Ethernet Instance 0 2";;
 	3) PILIHOS="https://files.sowan.my.id/windows2012.gz"  IFACE="Ethernet";;
 	4) PILIHOS="https://files.sowan.my.id/windows10.gz"  IFACE="Ethernet Instance 0 2";;
