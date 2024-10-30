@@ -3,7 +3,7 @@
 # CREATED By NIXPOIN.COM
 #
 echo "Pilih OS yang ingin anda install"
-echo "	1) Windows 2019 pribadi"
+echo "	1) Windows 2022 pribadi"
 echo "	2) Windows 2019 punyaorang"
 echo "	3) Windows 2012"
 echo "	4) Windows 10"
